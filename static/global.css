@@ -1,0 +1,19 @@
+.labelcanvas {
+	border:1px solid blue;
+	border-radius:5px;
+	margin:20px;
+	background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVQIW2OMq7zlw4ADMIIkF7WrbcEmP+gkAarWGgXyq5CNAAAAAElFTkSuQmCC);
+	position: relative;
+	overflow: auto;
+}
+.text {
+	position: absolute;
+	border:1px solid gray;
+	display: inline-block;
+	cursor: pointer;
+	font-size:0.5in;
+	overflow: hidden;
+}
+.selected {
+	border: 1px solid blue;
+}

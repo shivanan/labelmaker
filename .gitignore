@@ -1,0 +1,8 @@
+*.pyc
+.DS_Store
+venv
+lib
+bin
+.Python
+include
+static/*.js

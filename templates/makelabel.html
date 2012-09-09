@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<script src='/static/jquery-1.8.0.min.js'></script>
+		<script src='/static/jquery-ui-1.8.23.custom.min.js'></script>
+		<script src='/static/ml.js' ></script>
+		<link rel='stylesheet' href='/static/jquery-ui-1.8.23.custom.css' />
+		<link rel='stylesheet' href='/static/global.css' />
+		<script>
+var label = null;
+$(function(){
+	var lbl = new Label($('#label'));
+	label = lbl;
+	setDimensions();
+	lbl.addText('This is my text')
+})
+function setDimensions() {
+	var w = $('#w').val();
+	var h = $('#h').val();
+	label.setWidth(Number(w));
+	label.setHeight(Number(h));
+
+}
+function addObject() {
+	var txt = $('#newobject').val()
+	if (!!txt) {
+		label.addText(txt);
+	}
+}
+function preview() {
+	var json = JSON.stringify(label.serialize());
+	$('#qlabel').val(json);
+	$('#preview').submit();
+}
+		</script>
+	</head>
+	<body>
+		<div>
+			<input type='text' id='w' value='5'/>in 
+			x <input type='text' id='h' value='2' />in 
+			<button onclick='setDimensions();return false;'>Set</button>
+		</div>
+		<div>
+			<input type='text' id='newobject' />
+			<button onclick='addObject();return false;'>Add</button>
+		</div>
+		<div id='label'>
+		</div>
+		<form method='post' action='/render' id='preview' target='_blank'>
+			<input type='hidden' id='qlabel' name='qlabel' />
+			<button onclick='preview();return false;'>Preview</button>
+		</form>
+	</body>
+</html>
+
+
+
