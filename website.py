@@ -29,7 +29,11 @@ def render():
 		y = obj['y']*72
 		w = obj['width']*72
 		h = obj['height']*72
-		label.drawText(txt,x,y,w,h)
+		style = {
+			'fontSize':obj['font-size']*72
+		}
+		print style,'<><<<style'
+		label.drawText(txt,x,y,w,h,style)
 
 	data_stream = label.save()
 	return send_file(data_stream,'application/pdf')
