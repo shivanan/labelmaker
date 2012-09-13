@@ -5,4 +5,3 @@ lib
 bin
 .Python
 include
-static/*.js
