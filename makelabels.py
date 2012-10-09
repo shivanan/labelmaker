@@ -22,9 +22,18 @@ class Label(object):
 		_s.fontSize = style['fontSize']*1.0
 		# _s.fontSize = style['fontSize']
 		_s.leading = style['fontSize']
+		print _s
 		print 'writing text',txt,x,y
-		p = Paragraph(txt.strip(),_s)
-		p.wrapOn(self.canvas,w-margin*2,h-margin*2)
+		while _s.fontSize > 1.0:
+			p = Paragraph(txt.strip(),_s)	
+			aw,ah =  p.wrapOn(self.canvas,w-margin*2,h-margin*2)
+			print aw,w-margin*2,ah,h-margin*2,_s.fontSize
+			break
+			if (aw > w-margin*2) or (ah > h-margin*2):
+				_s.fontSize = _s.fontSize - 1
+				_s.leading = _s.fontSize*1.9
+			else:
+				break
 		p.drawOn(self.canvas,x+margin,y+margin)
 		self.canvas.restoreState()
 	def save(self):
